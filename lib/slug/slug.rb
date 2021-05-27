@@ -26,7 +26,7 @@ module Slug
       self.slug_column = opts.fetch(:column, :slug)
       self.generic_default = opts.fetch(:generic_default, false)
 
-      uniqueness_opts = {}
+      uniqueness_opts = { case_sensitive: false }
       uniqueness_opts.merge!(:if => opts[:validate_uniqueness_if]) if opts[:validate_uniqueness_if].present?
       validates_uniqueness_of self.slug_column, uniqueness_opts
 
